@@ -1,4 +1,6 @@
 import sqlite3
+import time
+import base64
 
 
 def init_db():
@@ -212,8 +214,13 @@ def registered_users():
 
     base, cursor = init_db()
     r = cursor.execute('''SELECT * FROM users ''').fetchall()
+    users = []
+    for user in r:
+        _login = base64.b64decode(user[0]).decode('utf-8')
+        _passw = base64.b64decode(user[1]).decode('utf-8')
+        users.append((_login, _passw, user[2], user[3]))
     base.close()
-    return r
+    return users
 
 
 def phone_numbers():
@@ -277,7 +284,9 @@ def create_user(login, passw, access):
 
     base, cursor = init_db()
     try:
-        cursor.execute('''INSERT INTO users VALUES(?, ?, ?)''', (login, passw, access))
+        encoded_login = base64.b64encode(login.encode('utf-8')).decode('ascii')
+        encoded_passw = base64.b64encode(passw.encode('utf-8')).decode('ascii')
+        cursor.execute('''INSERT INTO users VALUES(?, ?, ?, ?)''', (encoded_login, encoded_passw, access, None))
     except sqlite3.IntegrityError:
         # исключение если пытаются добавить уже существующую папку
         base.close()
@@ -330,6 +339,7 @@ def delete_user(login):
 
     base, cursor = init_db()
     try:
+        login = base64.b64encode(login.encode('utf-8')).decode('ascii')
         cursor.execute('''DELETE FROM users WHERE login == ?''', (login,))
         base.commit()
     except Exception:
@@ -421,3 +431,19 @@ def change_folder_all_hosts(id_folder, new_id):
     for i in all_info():
         if i[2] == id_folder:
             change_folder(i[0], new_id)
+
+
+def change_last_online(login):
+    base, cursor = init_db()
+    try:
+        login = base64.b64encode(login.encode('utf-8')).decode('ascii')
+        cursor.execute('''UPDATE users SET last_online == ? WHERE login == ?''', (int(time.time()), login))
+    except sqlite3.IntegrityError:
+        # исключение если пытаются добавить уже существующую папку
+        base.close()
+        return 'unique item error'
+    except Exception:
+        base.close()
+        return 'unknown error'
+    base.commit()
+    return 'success'

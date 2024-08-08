@@ -1,0 +1,39 @@
+<!doctype html>
+<html>
+
+<head>
+<meta charset="utf-8">
+<script type="text/javascript" src="/web/brython.js"></script>
+<script type="text/javascript" src="/web/brython_stdlib.js"></script>
+<link rel="stylesheet" href="/web/style_app.css">
+<meta name="viewport" content="width=divice-width, initial-scale=1">
+<title>Deil Eye</title>
+</head>
+
+<body id="body" onload="brython(1)" background="/web/images/bgYellow.jpg">
+    <script type="text/python" src="/web/main.py"></script>
+    <div id="content" align="center">
+        <div id="content2">
+            <img src="/web/images/authorized.png" id="img_deil"> <br>
+            <a href="../logs.txt" class="button1"><img class="imgs1" src="/web/images/log.png">Показать лог сервера</a> <br>
+            <a href="../hosts.db" class="button1"><img class="imgs1" src="/web/images/db.png">Скачать базу данных</a> <br>
+
+            <div id='content_folders'>
+                
+
+                <button class="buttons" id="all_hosts"><img src="/web/images/all_hosts.png" class="imgs">All Monitors</button> <br>
+                <button class="buttons" id="live_hosts"><img src="/web/images/live_hosts.png" class="imgs">Live Monitors</button> <br>
+                <button class="buttons" id="dead_hosts"><img src="/web/images/dead_hosts.png" class="imgs">Dead Monitors</button> <br>
+                <button class="buttons" id="pause_hosts"><img src="/web/images/pause_hosts.png" class="imgs">Pause Monitors</button> <br>
+                
+            </div>
+            <div id='content_action'>
+                <button class="buttons" id="check_all"><img src="/web/images/check_all.png" class="imgs">Check ALL</button> <br>
+                <button class="buttons" id="check_dead"><img src="/web/images/check_dead.png" class="imgs">Check DEAD</button>
+                
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

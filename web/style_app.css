@@ -1,0 +1,77 @@
+
+.table {
+	width: 100%;
+	margin-bottom: 20px;
+	border: 1px solid #dddddd;
+	border-collapse: collapse; 
+	background-color: white;
+	font-family: arial;
+	font-size: 12px;
+}
+.table th {
+	font-weight: bold;
+	padding: 5px;
+	background: #efefef;
+	border: 1px solid #dddddd;
+}
+.table td {
+	border: 1px solid #dddddd;
+	padding: 5px;
+}
+
+
+.buttons {
+	width: 100px;
+	height: 40px;
+}
+
+#content2 {
+	width: 100%;
+}
+
+#content_folders {
+	width: 50%;
+	height: 50%;
+	float: left;
+	display: inline;
+}
+
+#content_action {
+	width: 50%;
+	height: 200px;
+	float: right;
+	display: inline;
+	margin-bottom: 20px;
+}
+
+#check_dead {
+	margin-top: 10px;
+	width: 140px;
+	height: 50px;
+	padding: 10px;
+}
+
+#check_all {
+	margin-top: 40px;
+	width: 140px;
+	height: 50px;
+	text-align: center;
+}
+
+.buttons {
+	margin-top: 10px;
+	width: 180px;
+}
+
+.imgs {
+	vertical-align: middle;
+	float: left;
+	margin-left: 10px;
+
+}
+
+.imgs1 {
+	vertical-align: middle;
+	margin-right: 10px;
+	margin-top: 10px;
+}
