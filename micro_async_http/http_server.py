@@ -1,15 +1,6 @@
 import asyncio
 import time
-import mimetypes
-import os
-import datetime
 import ssl
-
-
-
-
-
-
 
 
 class AsyncHTTPServer:
@@ -19,7 +10,7 @@ class AsyncHTTPServer:
         self.stream_server = stream_server
         self.IP_ADDR = self.stream_server.IP
         # self.PORT = self.stream_server.properties.get['HttpPort']
-        self.PORT = 80
+        self.PORT = self.stream_server.properties['HttpPort']
 
         self.ssl_context = ssl.SSLContext(ssl.PROTOCOL_TLS_SERVER)
         self.ssl_context.check_hostname = False

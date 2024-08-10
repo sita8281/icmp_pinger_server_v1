@@ -1,7 +1,7 @@
 import json
 import base64
 import os
-from micro_async_http.http_server import AsyncSimpleHTTPRequestHandler
+from micro_async_http.base_request_handler import AsyncSimpleHTTPRequestHandler
 import db
 
 
